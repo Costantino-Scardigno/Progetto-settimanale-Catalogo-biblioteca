@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main{
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         Scanner scanner = new Scanner(System.in);
         Archivio archivio = new Archivio();
 
@@ -20,7 +20,7 @@ public class Main{
             System.out.println("6. Aggiorna un elemento");
             System.out.println("7. Mostra statistiche");
             System.out.println("0. Esci");
-            System.out.print("Scegli un'opzione: ");
+            System.out.print("\nScegli un'opzione: ");
 
             int scelta = scanner.nextInt();
             scanner.nextLine(); // Consuma la nuova riga
@@ -78,17 +78,42 @@ public class Main{
             System.out.print("Inserisci autore: ");
             String autore = scanner.nextLine();
 
-            System.out.print("Inserisci genere: ");
-            String genere = scanner.nextLine();
+            Libro.Genere genereEnum = null;
+            boolean genereValido = false;
 
-            archivio.aggiungiElemento(new Libro(isbn, titolo, anno, pagine, autore, genere));
+            while (!genereValido) {
+                try {
+                    System.out.print("Inserisci genere (HORROR, FANTASY, THRILLER, ROMANZO, UMORISTICO, BIOGRAFIA): ");
+                    String genere = scanner.nextLine().toUpperCase();
+                    genereEnum = Libro.Genere.valueOf(genere);
+                    genereValido = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Genere non valido! Inserisci un genere tra quelli specificati.");
+                }
+            }
+
+            archivio.aggiungiElemento(new Libro(isbn, titolo, anno, pagine, autore, genereEnum));
+            System.out.println("Libro aggiunto con successo.");
+
         } else if ("R".equals(tipo)) {
-            System.out.print("Inserisci periodicità (SETTIMANALE, MENSILE, SEMESTRALE): ");
-            String periodicita = scanner.nextLine().toUpperCase();
+            Rivista.Periodicita periodicitaEnum = null;
+            boolean periodicitaValida = false;
 
-            archivio.aggiungiElemento(new Rivista(isbn, titolo, anno, pagine, Rivista.Periodicita.valueOf(periodicita)));
+            while (!periodicitaValida) {
+                try {
+                    System.out.print("\nInserisci periodicità (SETTIMANALE, MENSILE, SEMESTRALE): ");
+                    String periodicita = scanner.nextLine().toUpperCase();
+                    periodicitaEnum = Rivista.Periodicita.valueOf(periodicita);
+                    periodicitaValida = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Periodicità non valida! Inserisci una tra SETTIMANALE, MENSILE, SEMESTRALE.");
+                }
+            }
+
+            archivio.aggiungiElemento(new Rivista(isbn, titolo, anno, pagine, periodicitaEnum));
+            System.out.println("Rivista aggiunta con successo.");
         } else {
-            System.out.println("Tipo non valido.");
+            System.out.println("Tipo non valido. Inserisci 'L' per libro o 'R' per rivista.");
         }
     }
 

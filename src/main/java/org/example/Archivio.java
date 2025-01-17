@@ -17,7 +17,7 @@ public class Archivio {
             System.out.println("Elemento con ISBN "+ elemento.getIsbn()+ " gia presente");
         } else {
             catalogo.add(elemento);
-            System.out.println("Elemento aggiunto correttamente");
+
         }
     }
     public ElementoCatalogo  ricercaPerIsbn(String isbn) throws EccezioneCustom{

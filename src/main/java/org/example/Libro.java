@@ -2,10 +2,15 @@ package org.example;
 
 public class Libro extends ElementoCatalogo {
     private String autore;
-    private String genere;
+    public enum Genere {
+        HORROR,FANTASY,THRILLER,ROMANZO,UMORISTICO,BIOGRAFIA
+    }
+    private Genere genere;
 
 
-    public Libro(String isbn, String titolo, int anno, int pagine,String autore,String genere) {
+
+
+    public Libro(String isbn, String titolo, int anno, int pagine,String autore,Genere genere)  {
         super(isbn, titolo, anno, pagine);
         this.autore=autore;
         this.genere=genere;
