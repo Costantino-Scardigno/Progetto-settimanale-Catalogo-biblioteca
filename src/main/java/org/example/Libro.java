@@ -15,6 +15,6 @@ public class Libro extends ElementoCatalogo {
         return autore;
     }
     public String toString() {
-        return super.toString()+ "Autore"+ autore + " " + "Genere" + genere;
+        return super.toString()+ " Autore="+ autore + " " + "Genere=" + genere;
     }
 }

@@ -1,7 +1,7 @@
 package org.example;
 
 public class Rivista extends ElementoCatalogo {
-    enum Periodicita {
+    public enum Periodicita {
         SETTIMANALE, MENSILE, SEMESTRALE
     }
     private Periodicita periodicita;
@@ -11,6 +11,6 @@ public class Rivista extends ElementoCatalogo {
         this.periodicita = periodicita;
     }
     public String toString() {
-        return super.toString() + ", Periodicità: " + periodicita;
+        return super.toString() + " Periodicità= " + periodicita;
     }
 }

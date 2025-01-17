@@ -1,6 +1,6 @@
 package org.example;
 
-public class ElementoCatalogo {
+public  class ElementoCatalogo {
     private String isbn;
     private String titolo;
     private int anno;
@@ -47,11 +47,10 @@ public class ElementoCatalogo {
 
     @Override
     public String toString() {
-        return "ElementoCatalogo{" +
-                "isbn='" + isbn + '\'' +
-                ", titolo='" + titolo + '\'' +
-                ", anno=" + anno +
-                ", pagine=" + pagine +
-                '}';
+        return
+                " Titolo=" + titolo + '\'' +
+                ", Anno=" + anno +
+                ", Pagine=" + pagine +
+                ' ' + "ISBN="+ isbn;
     }
 }
